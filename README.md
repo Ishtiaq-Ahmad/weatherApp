@@ -24,10 +24,10 @@ This is a simple weather app that allows users to search for weather information
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/weather-app.git
+   git clone https://github.com/Ishtiaq-Ahmad/weatherApp.git
 
-2.cd weather-app
-npm install
+2. cd weather-app
+   npm install
 
 3.REACT_APP_API_KEY=<your-api-key>
  
