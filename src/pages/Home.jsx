@@ -1,44 +1,44 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import SearchButton from '../component/atom/SearchButton';
 import InputField from '../component/atom/InputField';
 import { fetchWeatherData } from '../services';
 import WeatherInfo from '../component/atom/WeatherInfo';
 
-
 const Home = () => {
-
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setLoading(true)
-        if (city.trim() !== "") {
+        setLoading(true);
+        if (city.trim() !== '') {
             fetchWeatherData(city)
                 .then((res) => {
                     if (res.error) {
-                        alert(res.message)
+                        alert(res.message);
                         setError(true);
+                    } else {
+                        setWeatherData(res.payload);
+                        setError(null);
                     }
-                    setWeatherData(res.payload);
-                    setError(null);
-
                 })
                 .catch((err) => {
                     setError(true);
-                    alert('failed to fetch weather data', err)
+                    alert('Failed to fetch weather data', err);
                 })
                 .finally(() => setLoading(false));
         }
-
     };
+
     useEffect(() => {
+        // Reset weather data when city input field is empty
         if (city.trim() === '') {
             setWeatherData(null);
         }
     }, [city]);
+
     return (
         <>
             <div className='w-full md:w-1/3 h-4/6 border border-indigo-500 rounded-lg flex flex-col items-center p-1 md:p-10'>
@@ -88,7 +88,7 @@ const Home = () => {
             </div>
             <p>Developed By: Ishtiaq Ahmad</p>
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;
