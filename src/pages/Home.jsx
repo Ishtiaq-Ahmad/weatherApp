@@ -40,51 +40,54 @@ const Home = () => {
         }
     }, [city]);
     return (
-        <div className='w-full md:w-1/3 h-4/6 border border-indigo-500 rounded-lg flex flex-col items-center p-1 md:p-10'>
-            <h1 className='text-3xl font-bold text-indigo-500 mb-10'>Weather App</h1>
-            <div className='w-full text-center pb-10'>
-                <form onSubmit={handleSubmit} className='flex gap-2'>
-                    <InputField
-                        label='Username:'
-                        placeholder='Enter City Name'
-                        type='text'
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                    />
-                    <SearchButton type='submit' disabled={city.trim() === ''}>
-                        Search
-                    </SearchButton>
-                </form>
-                {error && <p className='text-red-600 pt-6'>{error}</p>}
-            </div>
-            {loading ? (
-                'Loading...'
-            ) : (
-                city.trim() !== '' && weatherData && (
-                    <div className='w-full'>
-                        <WeatherInfo title='Location' value={weatherData.name} />
-                        <WeatherInfo
-                            title='Temperature'
-                            value={`${Math.round(weatherData.main.temp - 273.15)}°C`}
+        <>
+            <div className='w-full md:w-1/3 h-4/6 border border-indigo-500 rounded-lg flex flex-col items-center p-1 md:p-10'>
+                <h1 className='text-3xl font-bold text-indigo-500 mb-10'>Weather App</h1>
+                <div className='w-full text-center pb-10'>
+                    <form onSubmit={handleSubmit} className='flex gap-2'>
+                        <InputField
+                            label='Username:'
+                            placeholder='Enter City Name'
+                            type='text'
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
                         />
-                        {weatherData.weather.map((item, index) => (
-                            <div key={index}>
-                                <WeatherInfo title='Conditions' value={item.description} />
-                                <WeatherInfo
-                                    title='Status Icon'
-                                    value={
-                                        <img
-                                            src={`http://openweathermap.org/img/w/${item.icon}.png`}
-                                            alt={item.description}
-                                        />
-                                    }
-                                />
-                            </div>
-                        ))}
-                    </div>
-                )
-            )}
-        </div>
+                        <SearchButton type='submit' disabled={city.trim() === ''}>
+                            Search
+                        </SearchButton>
+                    </form>
+                    {error && <p className='text-red-600 pt-6'>{error}</p>}
+                </div>
+                {loading ? (
+                    'Loading...'
+                ) : (
+                    city.trim() !== '' && weatherData && (
+                        <div className='w-full'>
+                            <WeatherInfo title='Location' value={weatherData.name} />
+                            <WeatherInfo
+                                title='Temperature'
+                                value={`${Math.round(weatherData.main.temp - 273.15)}°C`}
+                            />
+                            {weatherData.weather.map((item, index) => (
+                                <div key={index}>
+                                    <WeatherInfo title='Conditions' value={item.description} />
+                                    <WeatherInfo
+                                        title='Status Icon'
+                                        value={
+                                            <img
+                                                src={`http://openweathermap.org/img/w/${item.icon}.png`}
+                                                alt={item.description}
+                                            />
+                                        }
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    )
+                )}
+            </div>
+            <p>Developed By: Ishtiaq Ahmad</p>
+        </>
     )
 }
 
