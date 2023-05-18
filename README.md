@@ -26,11 +26,13 @@ This is a simple weather app that allows users to search for weather information
    ```bash
    git clone https://github.com/Ishtiaq-Ahmad/weatherApp.git
 
+   ```
+
 2. cd weather-app
    npm install
 
-3.REACT_APP_API_KEY=<your-api-key>
- 
-4.npm run dev
+3. REACT_APP_API_URL= https://api.openweathermap.org
 
- 
+4. npm run dev
+
+# Project URL: https://weatherapp-ishtiaq-ahmad.vercel.app
