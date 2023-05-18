@@ -40,7 +40,7 @@ const Home = () => {
         }
     }, [city]);
     return (
-        <div className='w-full md:w-1/3 h-4/6 border border-indigo-500 rounded-lg flex flex-col items-center p-10'>
+        <div className='w-full md:w-1/3 h-4/6 border border-indigo-500 rounded-lg flex flex-col items-center p-1 md:p-10'>
             <h1 className='text-3xl font-bold text-indigo-500 mb-10'>Weather App</h1>
             <div className='w-full text-center pb-10'>
                 <form onSubmit={handleSubmit} className='flex gap-2'>
